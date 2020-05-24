@@ -10,7 +10,6 @@ const app = express();
 global.__basedir = __dirname;
 
 const messageRoutes = require("./routes/message");
-const tempUpload = require("./middlewares/multer");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
