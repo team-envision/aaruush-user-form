@@ -129,6 +129,7 @@ exports.getReport = async (req, res, next) => {
       "Content-Disposition",
       'attachment; filename="' + reportName + '"'
     );
+    res.setHeader("x-filename", reportName);
     const csv = await json2csv.parseAsync(data, fields);
     res.status(200).send(csv);
   } catch (err) {

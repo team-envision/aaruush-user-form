@@ -2,7 +2,7 @@ const axios = require("axios");
 
 exports.captchaVerify = async (req, res, next) => {
   try {
-    const responseToken = req.body["g-recaptcha-response"];
+    const responseToken = req.get("x-recaptcha-token");
     if (!responseToken) {
       throw new Error("reCAPTCHA Missing.");
     }

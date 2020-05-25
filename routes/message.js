@@ -5,8 +5,8 @@ const recaptchaVerify = require("../middlewares/recaptcha").captchaVerify;
 
 router.post(
   "/upload",
-  tempUpload,
   recaptchaVerify,
+  tempUpload,
   messageController.postUpload
 );
 

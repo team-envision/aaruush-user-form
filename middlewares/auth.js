@@ -3,10 +3,10 @@ const Admin = require("../models/admin");
 
 exports.verifyUser = async (req, res, next) => {
   try {
-    if (!req.headers.authorization) {
+    if (!req.get("authorization")) {
       throw new Error("Login Credentials Invalid.");
     }
-    const authToken = req.headers.authorization.split(" ")[1];
+    const authToken = req.get("authorization").split(" ")[1];
     const authDetails = await new Promise((data) =>
       jwt.verify(
         authToken,
