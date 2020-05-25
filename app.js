@@ -7,14 +7,15 @@ const mongoose = require("mongoose");
 const path = require("path");
 
 const app = express();
-global.__basedir = __dirname;
 
 const messageRoutes = require("./routes/message");
+const adminRoutes = require("./routes/admin");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
+app.use("/api/admin", adminRoutes);
 app.use("/api", messageRoutes);
 
 mongoose

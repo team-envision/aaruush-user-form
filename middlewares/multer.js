@@ -3,10 +3,6 @@ const path = require("path");
 const uuid = require("uuid");
 
 const storageOptions = multer.diskStorage({
-  //   destination: function (req, file, cb) {
-  //     const dir = path.join(__basedir, "tempData");
-  //     cb(null, dir);
-  //   },
   filename: function (req, file, cb) {
     const name = uuid.v4() + "-" + file.originalname;
     cb(null, name);
