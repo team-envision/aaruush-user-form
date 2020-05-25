@@ -7,7 +7,7 @@ import Spinner from "../../components/UI/Spinner/Spinner";
 import * as actions from "../../store/actions/index";
 
 class Records extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.onFetchRecords();
   }
 
@@ -16,7 +16,7 @@ class Records extends Component {
 
     if (!this.props.loading) {
       notesLoader = (
-        <React.Fragment className={"text-center"}>
+        <React.Fragment>
           <div className="col-10">
             <table className="table">
               <tr>
@@ -26,7 +26,7 @@ class Records extends Component {
                 <th>ATTACHMENT</th>
               </tr>
               {this.props.records.map((record, index) => (
-                <tr>
+                <tr key={record._id}>
                   <td>{record.name}</td>
                   <td>{record.city}</td>
                   <td>{record.message}</td>

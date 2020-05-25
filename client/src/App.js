@@ -8,7 +8,7 @@ import AdminLogIn from "./containers/LogIn/LogIn";
 import Records from "./containers/Records/Records";
 import * as actions from "./store/actions/index";
 class App extends Component {
-  componentWillMount() {
+  componentDidMount() {
     if (localStorage.getItem("authToken")) {
       this.props.onCheckLogin();
     }

@@ -8,10 +8,20 @@ export const submitForm = (data) => {
     finalData.append("city", data.city);
     finalData.append("message", data.message);
     finalData.append("attachment", data.attachment);
-    finalData.append("g-recaptcha-response", data.recaptcha);
+
+    if (
+      finalData.get("message") === "" &&
+      finalData.get("attachment") === "null"
+    ) {
+      alert("Please provide either an Attachment, or a Message");
+      window.location.reload(false);
+      return;
+    }
 
     axios
-      .post("/api/upload", finalData)
+      .post("/api/upload", finalData, {
+        headers: { "x-recaptcha-token": data.recaptcha },
+      })
       .then(dispatch(sendData()))
       .then((res) => {
         if (res.data.status === "OK") {

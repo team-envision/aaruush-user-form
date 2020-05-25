@@ -38,9 +38,10 @@ export const getReport = () => {
       })
       .then((res) => {
         const url = window.URL.createObjectURL(new Blob([res.data]));
+        console.log(res);
         const link = document.createElement("a");
         link.href = url;
-        link.setAttribute("download", "AARUUSHopinions.csv"); //or any other extension
+        link.setAttribute("download", res.headers["x-filename"]);
         document.body.appendChild(link);
         link.click();
       })
