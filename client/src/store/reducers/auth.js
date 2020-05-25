@@ -11,6 +11,18 @@ const reducer = (state = initialState, action) => {
         ...state,
         isAuth: true,
       };
+    case actionType.CHECK_LOGIN:
+      return {
+        ...state,
+        isAuth: true,
+      };
+    case actionType.LOGOUT:
+      localStorage.removeItem("authToken");
+      alert("You are about to be logged out");
+      return {
+        ...state,
+        isAuth: false,
+      };
     default:
       return state;
   }

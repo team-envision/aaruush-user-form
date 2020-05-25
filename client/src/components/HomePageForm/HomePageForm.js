@@ -46,6 +46,7 @@ const HomePageForm = (props) => {
     formik.setFieldValue("recaptcha", value);
     console.log(value);
   }
+  console.log(process.env);
   return (
     <React.Fragment>
       <form
@@ -112,8 +113,12 @@ const HomePageForm = (props) => {
             type="file"
             className="inputfile"
             onChange={(event) => {
-              formik.setFieldValue("isAttached", true);
-              formik.setFieldValue("attachment", event.target.files[0]);
+              if (event.target.files[0]) {
+                formik.setFieldValue("isAttached", true);
+                formik.setFieldValue("attachment", event.target.files[0]);
+              } else {
+                formik.setFieldValue("isAttached", false);
+              }
               console.log(event.target.files[0]);
             }}
           />

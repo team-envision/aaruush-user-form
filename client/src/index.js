@@ -11,12 +11,14 @@ import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import "bootstrap/dist/css/bootstrap.min.css";
 import formReducer from "./store/reducers/formReducer";
 import authReducer from "./store/reducers/auth";
+import recordsReducer from "./store/reducers/records";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
-  formReducer: formReducer,
-  authReducer: authReducer,
+  formReducer,
+  authReducer,
+  recordsReducer,
 });
 
 const store = createStore(

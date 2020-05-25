@@ -11,8 +11,8 @@ const LogInForm = (props) => {
       password: "",
     },
     validationSchema: Yup.object({
-      email: Yup.string().required("Email is Required"),
-      password: Yup.string().required("No password provided."),
+      username: Yup.string().required("We need it to verify"),
+      password: Yup.string().required("We need it to verify"),
     }),
 
     onSubmit: (values) => {
@@ -29,7 +29,7 @@ const LogInForm = (props) => {
           <input
             id="username"
             name="username"
-            type="email"
+            type="text"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.username}

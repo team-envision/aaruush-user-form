@@ -1,37 +1,81 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as actions from "../../store/actions/index";
-import classes from "./Notes.css";
+import { Button } from "reactstrap";
 
-class Notes extends Component {
-  componentDidMount() {
-    () => this.props.onFetchRecords;
+import "./Records.css";
+import Spinner from "../../components/UI/Spinner/Spinner";
+import * as actions from "../../store/actions/index";
+
+class Records extends Component {
+  componentWillMount() {
+    this.props.onFetchRecords();
   }
 
   render() {
-    return (
-      <div className="col-10">
-        {this.props.records.map((note, index) => (
-          <Note />
-        ))}
-      </div>
-    );
+    let notesLoader = <Spinner />;
+
+    if (!this.props.loading) {
+      notesLoader = (
+        <React.Fragment>
+          <div className="col-10">
+            <table className="table">
+              <tr>
+                <th>NAME</th>
+                <th>CITY</th>
+                <th>MESSAGE</th>
+                <th>ATTACHMENT</th>
+              </tr>
+              {this.props.records.map((record, index) => (
+                <tr>
+                  <td>{record.name}</td>
+                  <td>{record.city}</td>
+                  <td>{record.message}</td>
+                  <td>
+                    {record.attachment ? (
+                      <a href={record.attachment}>Download Attachemnt</a>
+                    ) : null}
+                  </td>
+                </tr>
+              ))}
+            </table>
+            <div className="row">
+              <div className="col-5"></div>
+              <Button
+                className="col-2"
+                color="danger"
+                onClick={() => {
+                  this.props.onLogout();
+                }}
+              >
+                Logout
+              </Button>
+              <div className="col-5"></div>
+            </div>
+          </div>
+        </React.Fragment>
+      );
+    }
+
+    return <React.Fragment>{notesLoader}</React.Fragment>;
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    records: state.notes.notes,
-    loading: state.notes.loading,
+    records: state.recordsReducer.recordsArray,
+    loading: state.recordsReducer.loading,
   };
 };
 
 const mapDispatchToProps = (dispath) => {
   return {
-    onFetchRecords: () => console.log("OnfetchNotes"),
+    onFetchRecords: () => {
+      dispath(actions.fetchRecords());
+    },
+    onLogout: () => {
+      dispath(actions.logout());
+    },
   };
 };
 
-export default withPolling(actions.fetchNotes)(
-  connect(mapStateToProps, mapDispatchToProps)(Notes)
-);
+export default connect(mapStateToProps, mapDispatchToProps)(Records);
