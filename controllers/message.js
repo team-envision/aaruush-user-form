@@ -46,6 +46,7 @@ exports.postUpload = async (req, res, next) => {
         error: "Invalid Request. Missing Parameters.",
       });
     } else {
+      console.log(err);
       res.status(500).json({
         status: "ERROR",
         error: "Internal Server Error.",

@@ -37,7 +37,6 @@ exports.verifyUser = async (req, res, next) => {
         error: `${err.name}`,
       });
     } else if (err.message === "Login Credentials Invalid.") {
-      console.log(err);
       res.status(403).json({
         status: "ERROR",
         error: err.message,
