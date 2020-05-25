@@ -3,7 +3,7 @@
   display: block;
   height: 650px;
   margin: 15px auto;
-  margin-top: 50px;
+  margin-top: 120px;
   overflow-y: scroll;
   -webkit-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
   -moz-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -126,11 +126,6 @@
   transition: 0.5s;
 }
 
-/* .inputfile {
-  display: none;
-  overflow: hidden;
-} */
-
 .inputFile {
   cursor: pointer;
   margin: auto;
@@ -155,4 +150,10 @@
   letter-spacing: 1.1px;
   transition: 0.3s;
   color: #e91e63;
+}
+
+.recaptcha div div div {
+  display: block;
+  height: 100px;
+  margin: 20px auto;
 }

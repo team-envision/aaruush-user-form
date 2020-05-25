@@ -11,27 +11,11 @@ const HomePageForm = (props) => {
       name: "",
       city: "",
       message: "",
-      attachment: "",
+      attachment: null,
     },
-    validationSchema: Yup.object({
+    validationSchema: Yup.object().shape({
       name: Yup.string().required("We know you have a Name"),
       city: Yup.string().required("No city provided."),
-      attachment: Yup.mixed()
-        .required("ss")
-        .test(
-          "fileSize",
-          "Should be less than equal to 10mb",
-          (value) => value && value.size <= 10485760
-        )
-        .test(
-          "fileFormat",
-          "Unsupported Format",
-          (value) =>
-            value &&
-            ["image/jpg", "image/jpeg", "image/gif", "image/png"].includes(
-              value.type
-            )
-        ),
     }),
     onSubmit: (values) => {
       props.onSubmitForm(values);
@@ -113,15 +97,17 @@ const HomePageForm = (props) => {
             }}
           />
 
-          {formik.values.attachment !== "" && formik.errors.attachment ? (
+          {formik.values.attachment !== null && formik.errors.attachment ? (
             <div className="error">{formik.errors.attachment}</div>
           ) : null}
           <br />
 
-          <ReCAPTCHA
-            sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
-            onChange={captchaValue}
-          />
+          <div className="col-12 recaptcha text-center">
+            <ReCAPTCHA
+              sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
+              onChange={captchaValue}
+            />
+          </div>
 
           <div className="col-12 text-center">
             <Button className="btn" color="info" type="submit">
@@ -135,9 +121,3 @@ const HomePageForm = (props) => {
 };
 
 export default HomePageForm;
-
-// if (grecaptcha.getResponse() == "") {
-//   alert("You can't proceed!");
-// } else {
-//   alert("Thank you");
-// }

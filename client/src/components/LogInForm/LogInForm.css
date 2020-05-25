@@ -1,0 +1,7 @@
+.main {
+  display: block;
+  background-color: rgb(243, 243, 243);
+  box-shadow: 1px 2px 3px #ccc;
+  margin: 150px;
+  margin-top: 70px;
+}
