@@ -1,8 +1,8 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import ScriptTag from "react-script-tag";
-
+import { Button } from "reactstrap";
+import ReCAPTCHA from "react-google-recaptcha";
 import "./HomePageForm.css";
 
 const HomePageForm = (props) => {
@@ -10,31 +10,54 @@ const HomePageForm = (props) => {
     initialValues: {
       name: "",
       city: "",
-      content: "",
+      message: "",
+      attachment: "",
     },
     validationSchema: Yup.object({
       name: Yup.string().required("We know you have a Name"),
       city: Yup.string().required("No city provided."),
-      content: Yup.string().required("No Content provided."),
+      attachment: Yup.mixed()
+        .required("ss")
+        .test(
+          "fileSize",
+          "Should be less than equal to 10mb",
+          (value) => value && value.size <= 10485760
+        )
+        .test(
+          "fileFormat",
+          "Unsupported Format",
+          (value) =>
+            value &&
+            ["image/jpg", "image/jpeg", "image/gif", "image/png"].includes(
+              value.type
+            )
+        ),
     }),
-
     onSubmit: (values) => {
       props.onSubmitForm(values);
     },
   });
 
+  function captchaValue(value) {
+    formik.setFieldValue("recaptcha", value);
+    console.log(value);
+  }
   return (
     <React.Fragment>
-      <form onSubmit={formik.handleSubmit} className="login">
+      <form
+        onSubmit={formik.handleSubmit}
+        className="login col-10 col-md-8"
+        encType="multipart/form-data"
+      >
         <div className="form-group">
-          <label htmlFor="name" className="label_name">
+          <label htmlFor="name" className="label_name text-center">
             Name
           </label>
           <input
             id="name"
             name="name"
             type="text"
-            className="name"
+            className="name col-12 col-sm-6"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.name}
@@ -53,7 +76,7 @@ const HomePageForm = (props) => {
             id="city"
             name="city"
             type="text"
-            className="city"
+            className="city col-12 col-sm-6"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.city}
@@ -65,33 +88,46 @@ const HomePageForm = (props) => {
 
           <br />
 
-          <label htmlFor="content">Content</label>
+          <label htmlFor="message">Content</label>
           <textarea
-            id="content"
-            name="content"
+            id="message"
+            name="message"
             type="text"
             rows="7"
-            className="content"
+            className="content col-12 col-sm-8"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.content}
+            value={formik.values.message}
           />
 
-          {formik.touched.content && formik.errors.content ? (
-            <div className="error">{formik.errors.content}</div>
+          <br />
+
+          <input
+            id="attachment"
+            name="attachment"
+            type="file"
+            className="inputfile"
+            onChange={(event) => {
+              formik.setFieldValue("attachment", event.target.files[0]);
+              console.log(event.target.files[0]);
+            }}
+          />
+
+          {formik.values.attachment !== "" && formik.errors.attachment ? (
+            <div className="error">{formik.errors.attachment}</div>
           ) : null}
-
           <br />
 
-          <input type="file" name="file" id="file" class="inputfile" />
-          <p className="inputFile">
-            <label for="file">Choose a file</label>
-          </p>
-          <br />
+          <ReCAPTCHA
+            sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
+            onChange={captchaValue}
+          />
 
-          <button type="submit" className="btn">
-            Submit
-          </button>
+          <div className="col-12 text-center">
+            <Button className="btn" color="info" type="submit">
+              Submit
+            </Button>
+          </div>
         </div>
       </form>
     </React.Fragment>
@@ -99,3 +135,9 @@ const HomePageForm = (props) => {
 };
 
 export default HomePageForm;
+
+// if (grecaptcha.getResponse() == "") {
+//   alert("You can't proceed!");
+// } else {
+//   alert("Thank you");
+// }

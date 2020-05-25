@@ -8,4 +8,7 @@ body {
   -ms-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s;
+  padding: 0 !important;
+  padding-top: 50px;
+  margin: 0 !important;
 }
