@@ -24,7 +24,7 @@ exports.postSignup = async (req, res, next) => {
       err.name === "ValidationError" ||
       err.message === "Illegal arguments: undefined, number"
     ) {
-      res.status(406).json({
+      res.status(400).json({
         status: "ERROR",
         error: "Invalid Request. Missing Parameters.",
       });
@@ -95,7 +95,7 @@ exports.postLogin = async (req, res, next) => {
 exports.getRecords = async (req, res, next) => {
   try {
     const data = await Message.find().select(
-      "name city message attachment -_id"
+      "name city message attachment _id"
     );
     res.status(200).json({
       status: "OK",

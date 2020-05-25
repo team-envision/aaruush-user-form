@@ -41,7 +41,7 @@ exports.postUpload = async (req, res, next) => {
     }
   } catch (err) {
     if (err.name === "ValidationError") {
-      res.status(406).json({
+      res.status(400).json({
         status: "ERROR",
         error: "Invalid Request. Missing Parameters.",
       });
