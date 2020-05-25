@@ -12,10 +12,30 @@ const HomePageForm = (props) => {
       city: "",
       message: "",
       attachment: null,
+      isAttached: false,
     },
-    validationSchema: Yup.object().shape({
+    validationSchema: Yup.object({
       name: Yup.string().required("We know you have a Name"),
       city: Yup.string().required("No city provided."),
+      isAttached: Yup.boolean(),
+      attachment: Yup.mixed().when("isAttached", {
+        is: true,
+        then: Yup.mixed()
+          .test(
+            "fileSize",
+            "Should be less than equal to 10mb",
+            (value) => value && value.size <= 10485760
+          )
+          .test(
+            "fileFormat",
+            "Unsupported Format",
+            (value) =>
+              value &&
+              ["image/jpg", "image/jpeg", "image/gif", "image/png"].includes(
+                value.type
+              )
+          ),
+      }),
     }),
     onSubmit: (values) => {
       props.onSubmitForm(values);
@@ -92,6 +112,7 @@ const HomePageForm = (props) => {
             type="file"
             className="inputfile"
             onChange={(event) => {
+              formik.setFieldValue("isAttached", true);
               formik.setFieldValue("attachment", event.target.files[0]);
               console.log(event.target.files[0]);
             }}
