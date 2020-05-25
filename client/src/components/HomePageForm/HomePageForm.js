@@ -44,9 +44,8 @@ const HomePageForm = (props) => {
 
   function captchaValue(value) {
     formik.setFieldValue("recaptcha", value);
-    console.log(value);
   }
-  console.log(process.env);
+
   return (
     <React.Fragment>
       <form
@@ -119,7 +118,6 @@ const HomePageForm = (props) => {
               } else {
                 formik.setFieldValue("isAttached", false);
               }
-              console.log(event.target.files[0]);
             }}
           />
 

@@ -16,7 +16,6 @@ class Login extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     onLogin: (data) => {
-      console.log(data);
       dispatch(actions.login(data.username, data.password));
     },
   };

@@ -14,8 +14,6 @@ class App extends Component {
     }
   }
   render() {
-    console.log(this.props.isAuth);
-
     let routes = (
       <React.Fragment>
         <Switch>

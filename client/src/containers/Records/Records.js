@@ -16,7 +16,7 @@ class Records extends Component {
 
     if (!this.props.loading) {
       notesLoader = (
-        <React.Fragment>
+        <React.Fragment className={"text-center"}>
           <div className="col-10">
             <table className="table">
               <tr>
@@ -39,7 +39,17 @@ class Records extends Component {
               ))}
             </table>
             <div className="row">
-              <div className="col-5"></div>
+              <div className="col-4"></div>
+              <Button
+                className="col-2"
+                color="info"
+                onClick={() => {
+                  this.props.onGetReport();
+                }}
+              >
+                Download Everything
+              </Button>
+              <div className="col-2"></div>
               <Button
                 className="col-2"
                 color="danger"
@@ -49,7 +59,7 @@ class Records extends Component {
               >
                 Logout
               </Button>
-              <div className="col-5"></div>
+              <div className="col-4"></div>
             </div>
           </div>
         </React.Fragment>
@@ -74,6 +84,9 @@ const mapDispatchToProps = (dispath) => {
     },
     onLogout: () => {
       dispath(actions.logout());
+    },
+    onGetReport: () => {
+      dispath(actions.getReport());
     },
   };
 };
