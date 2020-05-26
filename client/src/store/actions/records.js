@@ -1,7 +1,11 @@
 import axios from "axios";
+import { createBrowserHistory } from "history";
+
 import * as actionTypes from "./actionTypes";
 
 export const fetchRecords = () => {
+  let history = createBrowserHistory();
+
   return (dispatch) => {
     let token = localStorage.getItem("authToken");
     axios
@@ -14,8 +18,18 @@ export const fetchRecords = () => {
         }
       })
       .catch((err) => {
-        if (err) {
-          console.log(err);
+        if (
+          err.response.status === 401 &&
+          err.response.data.error === "TokenExpiredError"
+        ) {
+          alert("Session Timeout. Please login again.");
+          history.go("/admin/login");
+        } else if (err.response.status === 401 || 403) {
+          alert("NO TRESPASSING!");
+          history.go("/admin/login");
+        } else if (err.response.status === 500) {
+          alert("Internal Server Error");
+          window.location.reload(false);
         }
       });
   };
@@ -29,6 +43,8 @@ export const setRecords = (records) => {
 };
 
 export const getReport = () => {
+  let history = createBrowserHistory();
+
   return () => {
     let token = localStorage.getItem("authToken");
     axios
@@ -46,8 +62,18 @@ export const getReport = () => {
         link.click();
       })
       .catch((err) => {
-        if (err) {
-          console.log(err);
+        if (
+          err.response.status === 401 &&
+          err.response.data.error === "TokenExpiredError"
+        ) {
+          alert("Session Timeout. Please login again.");
+          history.go("/admin/login");
+        } else if (err.response.status === 401 || 403) {
+          alert("NO TRESPASSING!");
+          history.go("/admin/login");
+        } else if (err.response.status === 500) {
+          alert("Internal Server Error");
+          window.location.reload(false);
         }
       });
   };

@@ -15,8 +15,10 @@ const HomePageForm = (props) => {
       isAttached: false,
     },
     validationSchema: Yup.object({
-      name: Yup.string().required("We know you have a Name"),
-      city: Yup.string().required("No city provided."),
+      name: Yup.string()
+        .required("We know you have a Name")
+        .min(2, "It's got to be longer"),
+      city: Yup.string().required("You dont live anywhere?"),
       isAttached: Yup.boolean(),
       attachment: Yup.mixed().when("isAttached", {
         is: true,
@@ -31,9 +33,13 @@ const HomePageForm = (props) => {
             "Unsupported Format",
             (value) =>
               value &&
-              ["image/jpg", "image/jpeg", "image/gif", "image/png"].includes(
-                value.type
-              )
+              [
+                "image/jpg",
+                "image/jpeg",
+                "image/png",
+                "video/mp4",
+                "video/x-msvideo",
+              ].includes(value.type)
           ),
       }),
     }),

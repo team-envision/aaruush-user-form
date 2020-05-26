@@ -1,4 +1,6 @@
 import axios from "axios";
+import { createBrowserHistory } from "history";
+
 import * as actionTypes from "./actionTypes";
 
 export const submitForm = (data) => {
@@ -18,6 +20,8 @@ export const submitForm = (data) => {
       return;
     }
 
+    let history = createBrowserHistory();
+
     axios
       .post("/api/upload", finalData, {
         headers: { "x-recaptcha-token": data.recaptcha },
@@ -30,7 +34,20 @@ export const submitForm = (data) => {
         }
       })
       .catch((err) => {
-        console.log(err.response.data);
+        console.log(err.response);
+        if (err.response.status === 400) {
+          console.log("400");
+          alert("reCAPTCHA Verification Failed");
+        } else if (err.response.status === 415) {
+          alert("Check the attachment: " + err.response.data.error);
+        } else if (err.response.status === 500) {
+          alert("Try again after some time");
+          history.goBack();
+        } else if (err.response.status === 403) {
+          // alert("Try again after some time");
+          // history.goBack();
+          //Forbidden///////////////////////////////////////////
+        }
       });
   };
 };

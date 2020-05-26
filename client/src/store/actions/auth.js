@@ -1,7 +1,11 @@
 import axios from "axios";
+import { createBrowserHistory } from "history";
+
 import * as actionTypes from "./actionTypes";
 
 export const login = (username, password) => {
+  let history = createBrowserHistory();
+
   return (dispatch) => {
     axios
       .post("/api/admin/login", {
@@ -12,12 +16,17 @@ export const login = (username, password) => {
         if (res.data.status === "OK") {
           dispatch(afterLogin());
           localStorage.setItem("authToken", res.data.authToken);
-          window.location.reload(false);
+          history.go("/admin/records");
         }
       })
       .catch((err) => {
-        if (err.response.data.error === "Username or Password Wrong.") {
+        if (err.response.status === 403) {
           alert("Invalid Credentials. Please try again.");
+        } else if (err.response.status === 500) {
+          alert("Try again after some time");
+          history.goBack();
+        } else if (err.response.status === 400) {
+          alert("Missing Parameters");
         }
       });
   };

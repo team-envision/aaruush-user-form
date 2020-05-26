@@ -9,6 +9,11 @@ import * as actions from "../../store/actions/index";
 class Records extends Component {
   componentDidMount() {
     this.props.onFetchRecords();
+    let expirationTime = localStorage.getItem("authTokenExpiration");
+    let currentTime = new Date().getTime();
+    console.log(expirationTime - currentTime);
+    let forcedLogout = expirationTime - currentTime;
+    setTimeout(() => this.props.onLogout(), forcedLogout);
   }
 
   render() {
@@ -18,6 +23,29 @@ class Records extends Component {
       notesLoader = (
         <React.Fragment>
           <div className="col-10">
+            <div className="row">
+              <div className="col-4"></div>
+              <Button
+                className="col-2 btn"
+                color="info"
+                onClick={() => {
+                  this.props.onGetReport();
+                }}
+              >
+                Generate Report
+              </Button>
+              <div className="col-2 btn"></div>
+              <Button
+                className="col-2"
+                color="danger"
+                onClick={() => {
+                  this.props.onLogout();
+                }}
+              >
+                Logout
+              </Button>
+              <div className="col-4"></div>
+            </div>
             <table className="table">
               <tr>
                 <th>NAME</th>
@@ -32,35 +60,12 @@ class Records extends Component {
                   <td>{record.message}</td>
                   <td>
                     {record.attachment ? (
-                      <a href={record.attachment}>Download Attachemnt</a>
+                      <a href={record.attachment}>Download Attachment</a>
                     ) : null}
                   </td>
                 </tr>
               ))}
             </table>
-            <div className="row">
-              <div className="col-4"></div>
-              <Button
-                className="col-2"
-                color="info"
-                onClick={() => {
-                  this.props.onGetReport();
-                }}
-              >
-                Download Everything
-              </Button>
-              <div className="col-2"></div>
-              <Button
-                className="col-2"
-                color="danger"
-                onClick={() => {
-                  this.props.onLogout();
-                }}
-              >
-                Logout
-              </Button>
-              <div className="col-4"></div>
-            </div>
           </div>
         </React.Fragment>
       );
@@ -74,19 +79,22 @@ const mapStateToProps = (state) => {
   return {
     records: state.recordsReducer.recordsArray,
     loading: state.recordsReducer.loading,
+    isAuth: state.authReducer.isAuth,
   };
 };
 
-const mapDispatchToProps = (dispath) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     onFetchRecords: () => {
-      dispath(actions.fetchRecords());
+      dispatch(actions.fetchRecords());
     },
     onLogout: () => {
-      dispath(actions.logout());
+      localStorage.removeItem("authTokenExpiration");
+      dispatch(actions.logout());
+      window.location.reload(false);
     },
     onGetReport: () => {
-      dispath(actions.getReport());
+      dispatch(actions.getReport());
     },
   };
 };

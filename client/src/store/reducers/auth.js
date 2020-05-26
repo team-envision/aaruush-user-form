@@ -7,6 +7,8 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionType.AFTER_LOGIN:
+      let loginTimeout = new Date().getTime() + 60 * 60 * 1000;
+      localStorage.setItem("authTokenExpiration", loginTimeout);
       return {
         ...state,
         isAuth: true,
