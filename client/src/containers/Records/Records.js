@@ -17,10 +17,10 @@ class Records extends Component {
   }
 
   render() {
-    let notesLoader = <Spinner />;
+    let recordsLoader = <Spinner />;
 
     if (!this.props.loading) {
-      notesLoader = (
+      recordsLoader = (
         <React.Fragment>
           <div className="col-12">
             <div className="row container">
@@ -71,7 +71,7 @@ class Records extends Component {
       );
     }
 
-    return <React.Fragment>{notesLoader}</React.Fragment>;
+    return <React.Fragment>{recordsLoader}</React.Fragment>;
   }
 }
 

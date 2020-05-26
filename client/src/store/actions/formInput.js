@@ -44,9 +44,7 @@ export const submitForm = (data) => {
           alert("Try again after some time");
           history.goBack();
         } else if (err.response.status === 403) {
-          // alert("Try again after some time");
-          // history.goBack();
-          //Forbidden///////////////////////////////////////////
+          history.goBack("/403");
         }
       });
   };

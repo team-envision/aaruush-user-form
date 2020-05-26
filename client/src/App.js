@@ -7,6 +7,7 @@ import HomePage from "./containers/HomePage/HomePage";
 import AdminLogIn from "./containers/LogIn/LogIn";
 import Records from "./containers/Records/Records";
 import NotFound from "./components/404/404";
+import Forbidden from "./components/403/403";
 import * as actions from "./store/actions/index";
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
       <React.Fragment>
         <Switch>
           <Route path="/" exact component={HomePage} />
+          <Route path="/403" exact component={Forbidden} />
           <Route path="/admin/login" exact component={AdminLogIn} />
           <Route path="*" component={NotFound} />
         </Switch>
@@ -34,6 +36,7 @@ class App extends Component {
         <React.Fragment>
           <Switch>
             <Route path="/" exact component={HomePage} />
+            <Route path="/403" exact component={Forbidden} />
             <Route path="/admin/login" exact component={AdminLogIn} />
             <Route path="/admin/records" exact component={Records} />
             <Route path="*" component={NotFound} />
