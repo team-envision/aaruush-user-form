@@ -22,11 +22,11 @@ class Records extends Component {
     if (!this.props.loading) {
       notesLoader = (
         <React.Fragment>
-          <div className="col-10">
-            <div className="row">
-              <div className="col-4"></div>
+          <div className="col-12">
+            <div className="row container">
+              <div className="col-2"></div>
               <Button
-                className="col-2 btn"
+                className="col-3 btn"
                 color="info"
                 onClick={() => {
                   this.props.onGetReport();
@@ -34,9 +34,9 @@ class Records extends Component {
               >
                 Generate Report
               </Button>
-              <div className="col-2 btn"></div>
+              <div className="col-2"></div>
               <Button
-                className="col-2"
+                className="col-3"
                 color="danger"
                 onClick={() => {
                   this.props.onLogout();
@@ -44,7 +44,7 @@ class Records extends Component {
               >
                 Logout
               </Button>
-              <div className="col-4"></div>
+              <div className="col-2"></div>
             </div>
             <table className="table">
               <tr>

@@ -4,7 +4,7 @@
   height: 650px;
   margin: 15px auto;
   margin-top: 120px;
-  padding-top: 100px;
+  padding-top: 30px;
   overflow-y: scroll;
   -webkit-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
   -moz-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -126,34 +126,66 @@
   transition: 0.5s;
 }
 
-.inputFile {
-  cursor: pointer;
-  margin: auto;
+input[type="file"] {
+  position: absolute;
+  z-index: -1;
+  top: 6px;
+  left: 28px;
+  font-size: 15px;
+  margin: auto !important;
+
+  color: #999;
+}
+
+.button-wrap {
+  position: relative;
   display: block;
+  margin: auto !important;
 }
-
-.inputFile:hover {
-  transform: scale(1.1);
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  -ms-transition: 0.3s;
-  -o-transition: 0.3s;
-  transition: 0.3s;
+.new-button {
+  display: inline-block;
+  margin: auto !important;
+  padding: 8px 12px;
+  cursor: pointer;
+  width: 120px;
+  border-radius: 4px;
+  background-color: seagreen;
+  font-size: 16px;
+  color: #fff;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
 }
-
+.new-button:hover {
+  transform: translateY(-5px);
+  transform: scale(1.05);
+  background-color: teal;
+}
 .btn {
   width: 100px;
   text-transform: uppercase;
+  letter-spacing: 1.1px;
 }
 
 .btn:hover {
-  letter-spacing: 1.1px;
+  letter-spacing: +1.6px;
   transition: 0.3s;
   color: #e91e63;
+}
+
+.btn.disabled {
+  cursor: not-allowed;
+}
+.btn.disabled:hover {
+  letter-spacing: -0.9px;
+  background-color: #e91e63;
 }
 
 .recaptcha div div div {
   display: block;
   height: 100px;
-  margin: 20px auto;
+  margin: auto;
+  margin-bottom: 30px;
 }

@@ -1,50 +1,23 @@
 import React from "react";
 
+import "./Sent.css";
+
 const Sent = () => {
   return (
-    <svg
-      version="1.1"
-      id="L6"
-      xmlns="http://www.w3.org/2000/svg"
-      x="0px"
-      y="0px"
-      viewBox="0 0 100 100"
-      enableBackground="new 0 0 100 100"
-      xmlSpace="preserve"
-    >
-      <rect
-        fill="none"
-        stroke="#fff"
-        stroke-width="4"
-        x="25"
-        y="25"
-        width="50"
-        height="50"
-      >
-        <animateTransform
-          attributeName="transform"
-          dur="0.5s"
-          from="0 50 50"
-          to="180 50 50"
-          type="rotate"
-          id="strokeBox"
-          attributeType="XML"
-          begin="rectBox.end"
-        />
-      </rect>
-      <rect x="27" y="27" fill="#fff" width="46" height="50">
-        <animate
-          attributeName="height"
-          dur="1.3s"
-          attributeType="XML"
-          from="50"
-          to="0"
-          id="rectBox"
-          fill="freeze"
-          begin="0s;strokeBox.end"
-        />
-      </rect>
-    </svg>
+    <React.Fragment>
+      <div className="col-6 container">
+        <svg viewBox="0 0 120 120">
+          <g class="g1">
+            <rect class="r1" x="30" y="30" width="60" height="60" />
+            <rect class="big" x="81" y="81" width="8" height="8" />
+            <rect class="r_ol" x="31" y="31" width="8" height="8" />
+            <rect class="r_or" x="81" y="31" width="8" height="8" />
+            <rect class="r_ul" x="31" y="81" width="8" height="8" />
+            <xrect class="r_ur" x="81" y="81" width="8" height="8" />
+          </g>
+        </svg>
+      </div>
+    </React.Fragment>
   );
 };
 
