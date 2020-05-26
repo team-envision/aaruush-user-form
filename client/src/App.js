@@ -6,7 +6,9 @@ import "./App.css";
 import HomePage from "./containers/HomePage/HomePage";
 import AdminLogIn from "./containers/LogIn/LogIn";
 import Records from "./containers/Records/Records";
+import NotFound from "./components/404/404";
 import * as actions from "./store/actions/index";
+
 class App extends Component {
   componentDidMount() {
     if (localStorage.getItem("authToken")) {
@@ -19,7 +21,7 @@ class App extends Component {
         <Switch>
           <Route path="/" exact component={HomePage} />
           <Route path="/admin/login" exact component={AdminLogIn} />
-          {/* <Route path="*" component={NotFoundPage} /> */}
+          <Route path="*" component={NotFound} />
         </Switch>
         <Route exact path="/admin/records">
           <Redirect to="/admin/login" />
@@ -34,7 +36,7 @@ class App extends Component {
             <Route path="/" exact component={HomePage} />
             <Route path="/admin/login" exact component={AdminLogIn} />
             <Route path="/admin/records" exact component={Records} />
-            {/* <Route path="*" component={NotFoundPage} /> */}
+            <Route path="*" component={NotFound} />
           </Switch>
           <Route exact path="/admin/login">
             <Redirect to="/admin/records" />

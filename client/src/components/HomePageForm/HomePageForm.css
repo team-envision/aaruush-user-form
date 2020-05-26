@@ -1,3 +1,8 @@
+label {
+  text-transform: uppercase;
+  letter-spacing: 1.07px;
+}
+
 .login {
   background: #fbfbfb;
   display: block;
@@ -76,14 +81,16 @@
   padding-left: 30px;
 }
 .error {
-  width: 220px;
+  width: 300px;
   margin: auto;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 15px;
   margin-top: 20px;
-  box-shadow: 1px 2px 3px rgba(255, 0, 0);
+  /* box-shadow: 1px 2px 3px rgba(255, 0, 0); */
   z-index: 2;
-  color: #fff;
+  color: red;
   text-align: center;
-  background-color: rgba(255, 0, 0, 0.671);
   -webkit-transition: 0.5s;
   -moz-transition: 0.5s;
   -ms-transition: 0.5s;
@@ -130,7 +137,7 @@ input[type="file"] {
   position: absolute;
   z-index: -1;
   top: 6px;
-  left: 28px;
+  left: 47px;
   font-size: 15px;
   margin: auto !important;
 
@@ -147,7 +154,7 @@ input[type="file"] {
   margin: auto !important;
   padding: 8px 12px;
   cursor: pointer;
-  width: 120px;
+  width: 140px;
   border-radius: 4px;
   background-color: seagreen;
   font-size: 16px;
@@ -167,6 +174,7 @@ input[type="file"] {
   width: 100px;
   text-transform: uppercase;
   letter-spacing: 1.1px;
+  margin-top: 30px !important;
 }
 
 .btn:hover {
@@ -187,5 +195,6 @@ input[type="file"] {
   display: block;
   height: 100px;
   margin: auto;
-  margin-bottom: 30px;
+  margin-bottom: 0px;
+  margin-top: 20px;
 }

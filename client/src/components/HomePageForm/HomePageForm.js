@@ -17,21 +17,21 @@ const HomePageForm = (props) => {
     },
     validationSchema: Yup.object({
       name: Yup.string()
-        .required("We know you have a Name")
-        .min(2, "It's got to be longer"),
-      city: Yup.string().required("You dont live anywhere?"),
+        .required("❗ We know you have a Name")
+        .min(2, "❗ It's got to be longer"),
+      city: Yup.string().required("❗ You don't live anywhere ?"),
       isAttached: Yup.boolean(),
       attachment: Yup.mixed().when("isAttached", {
         is: true,
         then: Yup.mixed()
           .test(
             "fileSize",
-            "Should be less than equal to 10mb",
+            "❗ Should be less than equal to 10mb",
             (value) => value && value.size <= 10485760
           )
           .test(
             "fileFormat",
-            "Unsupported Format",
+            "❗ Unsupported Format",
             (value) =>
               value &&
               [
