@@ -20,7 +20,7 @@ class ThankYou extends Component {
             <ThankYouComponent>
               <Container className={classes.container}>
                 <div className="mt-4 text-center">
-                  <h1 className="display-5">LETTER TO SILENT HEREOS</h1>
+                  <h1 className="display-5">SALUTE TO THE UNSUNG HEROES</h1>
                   <div className="row">
                     <div className=" col-12 col-md-6">
                       <div
