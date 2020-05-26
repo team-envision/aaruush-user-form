@@ -16,7 +16,7 @@ export const login = (username, password) => {
         if (res.data.status === "OK") {
           dispatch(afterLogin());
           localStorage.setItem("authToken", res.data.authToken);
-          history.go("/admin/records");
+          history.push("/admin/records");
         }
       })
       .catch((err) => {

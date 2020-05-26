@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 import "./App.css";
 import HomePage from "./containers/HomePage/HomePage";
+import ThankYou from "./containers/ThankYou/ThankYou";
 import AdminLogIn from "./containers/LogIn/LogIn";
 import Records from "./containers/Records/Records";
 import NotFound from "./components/404/404";
@@ -21,6 +22,7 @@ class App extends Component {
       <React.Fragment>
         <Switch>
           <Route path="/" exact component={HomePage} />
+          <Route path="/thank-you" exact component={ThankYou} />
           <Route path="/403" exact component={Forbidden} />
           <Route path="/admin/login" exact component={AdminLogIn} />
           <Route path="*" component={NotFound} />
@@ -36,6 +38,7 @@ class App extends Component {
         <React.Fragment>
           <Switch>
             <Route path="/" exact component={HomePage} />
+            <Route path="/thank-you" exact component={ThankYou} />
             <Route path="/403" exact component={Forbidden} />
             <Route path="/admin/login" exact component={AdminLogIn} />
             <Route path="/admin/records" exact component={Records} />

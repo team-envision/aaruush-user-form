@@ -3,6 +3,8 @@ import { createBrowserHistory } from "history";
 
 import * as actionTypes from "./actionTypes";
 
+let history = createBrowserHistory();
+
 export const submitForm = (data) => {
   return (dispatch) => {
     let finalData = new FormData();
@@ -16,11 +18,8 @@ export const submitForm = (data) => {
       finalData.get("attachment") === "null"
     ) {
       alert("Please provide either an Attachment, or a Message");
-      window.location.reload(false);
       return;
     }
-
-    let history = createBrowserHistory();
 
     axios
       .post("/api/upload", finalData, {
@@ -30,6 +29,8 @@ export const submitForm = (data) => {
       .then((res) => {
         if (res.data.status === "OK") {
           alert("Thank you for sharing your message!");
+          history.push("/thank-you");
+          dispatch(resetSent());
           window.location.reload(false);
         }
       })
@@ -53,5 +54,11 @@ export const submitForm = (data) => {
 export const sendData = () => {
   return {
     type: actionTypes.SEND_DATA,
+  };
+};
+
+export const resetSent = () => {
+  return {
+    type: "resetSent",
   };
 };

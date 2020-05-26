@@ -11,6 +11,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         sent: true,
       };
+    case "resetSent":
+      return {
+        ...state,
+        sent: false,
+      };
     default:
       return state;
   }

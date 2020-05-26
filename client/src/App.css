@@ -1,6 +1,5 @@
 body {
-  font-family: "Open Sans", sans-serif;
-  background-image: url("./assets/images/background.jpg");
+  background-image: url("./assets/images/background.png");
   background-repeat: no-repeat;
   background-size: cover;
   -webkit-transition: 0.3s;
@@ -11,4 +10,15 @@ body {
   padding: 0 !important;
   padding-top: 50px;
   margin: 0 !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Abril Fatface", cursive;
+}
+p {
+  font-family: "Lato", sans-serif;
 }

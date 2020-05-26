@@ -23,10 +23,10 @@ export const fetchRecords = () => {
           err.response.data.error === "TokenExpiredError"
         ) {
           alert("Session Timeout. Please login again.");
-          history.go("/admin/login");
+          history.push("/admin/login");
         } else if (err.response.status === 401 || 403) {
           alert("NO TRESPASSING!");
-          history.go("/admin/login");
+          history.push("/admin/login");
         } else if (err.response.status === 500) {
           alert("Internal Server Error");
           window.location.reload(false);
@@ -67,10 +67,10 @@ export const getReport = () => {
           err.response.data.error === "TokenExpiredError"
         ) {
           alert("Session Timeout. Please login again.");
-          history.go("/admin/login");
+          history.push("/admin/login");
         } else if (err.response.status === 401 || 403) {
           alert("NO TRESPASSING!");
-          history.go("/admin/login");
+          history.push("/admin/login");
         } else if (err.response.status === 500) {
           alert("Internal Server Error");
           window.location.reload(false);
