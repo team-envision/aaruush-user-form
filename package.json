@@ -9,7 +9,8 @@
     "dev": "nodemon app.js",
     "start": "node app.js",
     "preinstall": "npm install --prefix client",
-    "postinstall": "npm run build --prefix client"
+    "postinstall": "npm run build --prefix client",
+    "build": "npm run build --prefix client"
   },
   "repository": {
     "type": "git",
