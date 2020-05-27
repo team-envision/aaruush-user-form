@@ -140,17 +140,11 @@ const HomePageForm = (props) => {
             <br />
 
             <br />
-
-            <div className="recaptcha">
-              <ReCAPTCHA
-                sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
-                onChange={captchaValue}
-                style={{
-                  transform: "scale(0.77)",
-                  WebkitTransform: "scale(0.77)",
-                }}
-              />
-            </div>
+            <ReCAPTCHA
+              sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
+              className="recaptcha"
+              onChange={captchaValue}
+            />
 
             <div className="col-12 text-center">
               <Button

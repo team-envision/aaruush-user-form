@@ -4,7 +4,7 @@ import { Container } from "reactstrap";
 import ThankYouComponent from "../../components/ThankYouComponent/ThankYouComponent";
 import classes from "./ThankYou.module.css";
 import aaruush_logo from "../../assets/images/aaruush_logo.png";
-import medicTeam from "../../assets/images/medic-team.png";
+import heroes from "../../assets/images/heroes.png";
 
 class ThankYou extends Component {
   render() {
@@ -48,8 +48,8 @@ class ThankYou extends Component {
                       </div>
                     </div>
                     <img
-                      src={medicTeam}
-                      alt="medicTeam"
+                      src={heroes}
+                      alt="heroes"
                       className="col-12 col-lg-6"
                     />
                   </div>

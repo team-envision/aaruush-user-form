@@ -185,13 +185,20 @@
   background-color: #e91e63;
 }
 
-.recaptcha div div div {
-  display: block;
+.recaptcha div div {
   margin: auto;
-  margin-bottom: 0px;
-  margin-top: 20px;
+}
+
+iframe {
+  transform: scale(0.55);
 }
 
 .teamEnvision_logo {
   margin-top: 0px !important;
+}
+
+@media (min-width: 450px) {
+  iframe {
+    transform: scale(1);
+  }
 }
