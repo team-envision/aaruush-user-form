@@ -21,7 +21,7 @@ class HomePage extends Component {
               <img
                 src={aaruush_logo}
                 alt="aaruush_logo"
-                className={classes.aaruush_logo + " col-9 col-md-3"}
+                className={classes.aaruush_logo + " col-10 col-md-3"}
               />
               <HomePageForm
                 onSubmitForm={(values) => this.props.onSubmitForm(values)}
@@ -31,7 +31,7 @@ class HomePage extends Component {
                   <div className="mt-4 text-center">
                     <h1 className="display-5">SALUTE TO THE UNSUNG HEROES</h1>
                     <div className="row">
-                      <div className=" col-12 col-md-6">
+                      <div className=" col-12 col-lg-6">
                         <div
                           className={
                             classes.content_p + " text-center text-md-left"
@@ -59,7 +59,7 @@ class HomePage extends Component {
                       <img
                         src={medicTeam}
                         alt="medicTeam"
-                        className="col-12 col-md-6"
+                        className="col-12 col-lg-6"
                       />
                     </div>
                   </div>
