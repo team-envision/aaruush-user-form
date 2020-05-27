@@ -7,7 +7,7 @@ import Sent from "../../components/UI/Sent/Sent";
 import * as actions from "../../store/actions/index";
 import classes from "./HomePage.module.css";
 import aaruush_logo from "../../assets/images/aaruush_logo.png";
-import medicTeam from "../../assets/images/medic-team.png";
+import heroes from "../../assets/images/heroes.png";
 
 class HomePage extends Component {
   render() {
@@ -32,19 +32,15 @@ class HomePage extends Component {
                     <h1 className="display-5">SALUTE TO THE UNSUNG HEROES</h1>
                     <div className="row">
                       <div className=" col-12 col-lg-6">
-                        <div
-                          className={
-                            classes.content_p + " text-center text-md-left"
-                          }
-                        >
-                          <p className="">
+                        <div className={classes.content_p}>
+                          <p className="text-justify">
                             While we sit safely in our homes, some spend days
                             and nights to fight this pandemic. Putting their
                             lives at risk, they serve this nation diligently.
                             Team Aaruush takes this moment, to thank their
                             efforts and pray for their well-being.
                           </p>
-                          <p className="">
+                          <p className="text-justify">
                             To show our gratitude towards their selflessness, we
                             request you to share with us a picture of any known
                             corona warriors and also write a little something to
@@ -57,8 +53,8 @@ class HomePage extends Component {
                         </div>
                       </div>
                       <img
-                        src={medicTeam}
-                        alt="medicTeam"
+                        src={heroes}
+                        alt="heroes"
                         className="col-12 col-lg-6"
                       />
                     </div>
