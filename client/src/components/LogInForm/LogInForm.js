@@ -1,6 +1,7 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { Button } from "reactstrap";
 
 import "./LogInForm.css";
 
@@ -11,8 +12,8 @@ const LogInForm = (props) => {
       password: "",
     },
     validationSchema: Yup.object({
-      username: Yup.string().required("We need it to verify"),
-      password: Yup.string().required("We need it to verify"),
+      username: Yup.string().required("❗ We need it to verify"),
+      password: Yup.string().required("❗ We need it to verify"),
     }),
 
     onSubmit: (values) => {
@@ -21,41 +22,53 @@ const LogInForm = (props) => {
   });
 
   return (
-    <div className="main text-center">
-      <form onSubmit={formik.handleSubmit} className="form-group">
-        <h1 className="col-12 text-center"> Log In! </h1>
-        <div className="col-12">
-          <label htmlFor="username">Username</label>
+    <div className="form-group">
+      <h1 className="col-12 text-center"> Log In! </h1>
+      <form onSubmit={formik.handleSubmit} className="login col-11 col-md-9">
+        <div>
+          <label htmlFor="username" className="label_username text-center">
+            Username
+          </label>
           <input
             id="username"
             name="username"
             type="text"
+            className="username col-11"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.username}
           />
+
           {formik.touched.username && formik.errors.username ? (
-            <div>{formik.errors.username}</div>
+            <div className="error col-12">{formik.errors.username}</div>
           ) : null}
         </div>
+
         <br />
 
-        <div className="col-12">
-          <label htmlFor="password">Password</label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.password}
-          />
-          {formik.touched.password && formik.errors.password ? (
-            <div>{formik.errors.password}</div>
-          ) : null}
-        </div>
-        <div className="col-12">
-          <button type="submit">Submit</button>
+        <label htmlFor="password" className="label_password">
+          Password
+        </label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          className="password col-11"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.password}
+        />
+
+        {formik.touched.password && formik.errors.password ? (
+          <div className="error">{formik.errors.password}</div>
+        ) : null}
+
+        <br />
+
+        <div className="col-12 text-center">
+          <Button type="submit" color="success" className="btn col-6">
+            Submit
+          </Button>
         </div>
       </form>
     </div>

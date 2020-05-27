@@ -7,7 +7,7 @@ import Spinner from "../../components/UI/Spinner/Spinner";
 import * as actions from "../../store/actions/index";
 
 class Records extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.onFetchRecords();
     let expirationTime = localStorage.getItem("authTokenExpiration");
     let currentTime = new Date().getTime();
@@ -23,10 +23,9 @@ class Records extends Component {
       recordsLoader = (
         <React.Fragment>
           <div className="col-12">
-            <div className="row container">
-              <div className="col-2"></div>
+            <div className="row">
               <Button
-                className="col-3 btn"
+                className="col-5 col-md-3 btn"
                 color="info"
                 onClick={() => {
                   this.props.onGetReport();
@@ -34,9 +33,9 @@ class Records extends Component {
               >
                 Generate Report
               </Button>
-              <div className="col-2"></div>
+              <div className="col-1"></div>
               <Button
-                className="col-3"
+                className="col-5 col-md-3"
                 color="danger"
                 onClick={() => {
                   this.props.onLogout();
@@ -44,10 +43,10 @@ class Records extends Component {
               >
                 Logout
               </Button>
-              <div className="col-2"></div>
             </div>
             <table className="table">
               <tr>
+                <th>S NO.</th>
                 <th>NAME</th>
                 <th>CITY</th>
                 <th>MESSAGE</th>
@@ -55,13 +54,18 @@ class Records extends Component {
               </tr>
               {this.props.records.map((record, index) => (
                 <tr key={record._id}>
+                  <td>{index + 1}.</td>
                   <td>{record.name}</td>
                   <td>{record.city}</td>
-                  <td>{record.message}</td>
+                  <td>
+                    {record.message ? record.message : <strong>N/A</strong>}
+                  </td>
                   <td>
                     {record.attachment ? (
                       <a href={record.attachment}>Download Attachment</a>
-                    ) : null}
+                    ) : (
+                      <strong>N/A</strong>
+                    )}
                   </td>
                 </tr>
               ))}

@@ -26,6 +26,7 @@ export const fetchRecords = () => {
           history.push("/admin/login");
         } else if (err.response.status === 401 || 403) {
           alert("NO TRESPASSING!");
+          window.location.reload(false);
           history.push("/admin/login");
         } else if (err.response.status === 500) {
           alert("Internal Server Error");
