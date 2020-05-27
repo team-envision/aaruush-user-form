@@ -54,7 +54,7 @@ const HomePageForm = (props) => {
   function captchaValue(value) {
     formik.setFieldValue("recaptcha", value);
   }
-
+  console.log(process.env);
   return (
     <React.Fragment>
       {props.children}
@@ -109,8 +109,8 @@ const HomePageForm = (props) => {
                 type="file"
                 id="attachment"
                 name="customFile"
-                label="Choose one file"
                 className="file col-11"
+                style={{ marginLeft: "0px" }}
                 onChange={(event) => {
                   if (event.target.files[0]) {
                     formik.setFieldValue("isAttached", true);
@@ -148,8 +148,6 @@ const HomePageForm = (props) => {
                 style={{
                   transform: "scale(0.77)",
                   WebkitTransform: "scale(0.77)",
-                  // transformOrigin: "0 0",
-                  // webkitTransformOrigin: "0 0",
                 }}
               />
             </div>
@@ -160,6 +158,16 @@ const HomePageForm = (props) => {
                 color="success"
                 type="submit"
                 disabled={formik.values.recaptcha ? false : true}
+                onClick={() => {
+                  if (
+                    formik.errors.name ||
+                    formik.errors.city ||
+                    formik.errors.message ||
+                    formik.errors.attachment
+                  ) {
+                    alert("Please check the inputs for errors");
+                  }
+                }}
               >
                 Submit
               </Button>
