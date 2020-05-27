@@ -56,11 +56,10 @@ const HomePageForm = (props) => {
 
   return (
     <React.Fragment>
-      {props.children}
       <div className="form-group">
         <Form
           onSubmit={formik.handleSubmit}
-          className="login col-11 col-md-9"
+          className="main col-11 col-md-9"
           encType="multipart/form-data"
         >
           <div>
@@ -128,7 +127,6 @@ const HomePageForm = (props) => {
               id="message"
               name="message"
               type="text"
-              rows="7"
               placeholder="Something you want to write about"
               className="message col-11"
               onChange={formik.handleChange}

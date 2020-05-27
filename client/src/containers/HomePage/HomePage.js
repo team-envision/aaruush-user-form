@@ -47,19 +47,18 @@ class HomePage extends Component {
     return (
       <React.Fragment>
         <div>
-          <img
-            src={aaruush_logo}
-            alt="aaruush_logo"
-            className={classes.aaruush_logo + " col-10 col-md-3 mx-auto"}
-          />
-          {this.props.sent ? (
-            <Sent />
-          ) : (
-            <React.Fragment>
-              <HomePageForm
-                onSubmitForm={(values) => this.props.onSubmitForm(values)}
-                fileUploaded={(file) => console.log(file)}
-              >
+          <div className={classes.bgColor + " pb-3"}>
+            <img
+              src={aaruush_logo}
+              alt="aaruush_logo"
+              className={
+                classes.aaruush_logo + " col-10 col-md-6 col-lg-3 mx-auto"
+              }
+            />
+            {this.props.sent ? (
+              <Sent />
+            ) : (
+              <React.Fragment>
                 <Container className={classes.container}>
                   <div className="mt-4 text-center">
                     <h1 className="display-5">SALUTE TO THE UNSUNG HEROES</h1>
@@ -71,8 +70,14 @@ class HomePage extends Component {
                     </div>
                   </div>
                 </Container>
-              </HomePageForm>
-            </React.Fragment>
+              </React.Fragment>
+            )}
+          </div>
+          {this.props.sent ? null : (
+            <HomePageForm
+              onSubmitForm={(values) => this.props.onSubmitForm(values)}
+              fileUploaded={(file) => console.log(file)}
+            />
           )}
           <div className="col-12 text-center">
             <img

@@ -1,19 +1,18 @@
 import React from "react";
 import Icon from "react-icons-kit";
 import { instagram } from "react-icons-kit/fa/instagram";
+import { facebook } from "react-icons-kit/fa/facebook";
 
 import "./ThankYouComponent.css";
-import teamEnvision_logo from "../../assets/images/teamEnvision_logo.png";
 
-const ThankYouComponent = (props) => {
+const ThankYouComponent = () => {
   return (
     <React.Fragment>
-      {props.children}
       <div className="form-group">
         <div className="login col-11 col-md-9 text-center">
           <h2 className="col-12">Thank you for your response</h2>
           <br />
-          <div className="col-8 mx-auto">
+          <div className="col-12 mx-auto">
             <p>
               Every word of your appreciation will mean the world to the front
               line fighters and daily workers. Team Aaruush thanks you for
@@ -21,16 +20,34 @@ const ThankYouComponent = (props) => {
             </p>
             <div>
               <p>
-                Kindly follow our Instagram Page
+                Kindly follow our Social Handles
                 <br />
                 <i>
                   <h5>
                     <a
-                      href="https://www.instagram.com/aaruush_srm/?hl=en"
-                      className="instaHREF"
+                      href="https://www.facebook.com/aaruush.srm"
+                      className="HREF insta"
                     >
-                      <Icon icon={instagram} />
-                      /aaruushsrm
+                      <Icon
+                        icon={facebook}
+                        size={28}
+                        style={{ color: "#ab2e8e" }}
+                      />
+                      /aaruush
+                    </a>
+
+                    <br />
+
+                    <a
+                      href="https://www.instagram.com/aaruush_srm/?hl=en"
+                      className="HREF fb"
+                    >
+                      <Icon
+                        icon={instagram}
+                        size={28}
+                        style={{ color: "#4064ad" }}
+                      />
+                      /aaruush_srm
                     </a>
                   </h5>
                 </i>

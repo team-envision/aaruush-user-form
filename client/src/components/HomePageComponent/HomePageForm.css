@@ -6,15 +6,13 @@
   font-weight: 700;
 }
 
-.login {
+.main {
   background: #fafafa;
   display: block;
-  height: 400px;
   margin: 15px auto;
   margin-top: 100px;
   margin-bottom: 0px;
   padding-top: 30px;
-  overflow-y: scroll;
   -webkit-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
   -moz-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
   -ms-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);

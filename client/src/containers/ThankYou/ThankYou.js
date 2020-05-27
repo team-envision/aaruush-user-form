@@ -44,31 +44,32 @@ class ThankYou extends Component {
     return (
       <React.Fragment>
         <div>
-          <React.Fragment>
+          <div className={classes.bgColor + " pb-3"}>
             <img
               src={aaruush_logo}
               alt="aaruush_logo"
-              className={classes.aaruush_logo + " col-10 col-md-3 mx-auto"}
+              className={
+                classes.aaruush_logo + " col-10 col-md-6 col-lg-3 mx-auto"
+              }
             />
-            <ThankYouComponent>
-              <Container className={classes.container}>
-                <div className="mt-4 text-center">
-                  <h1 className="display-5">SALUTE TO THE UNSUNG HEROES</h1>
-                  <div className="row">
-                    <div className=" col-12 col-lg-6">
-                      {this.state.viewWidth < 991 ? heroesImg : content}
-                    </div>
-                    {this.state.viewWidth < 991 ? content : heroesImg}
+            <Container className={classes.container}>
+              <div className="mt-4 text-center">
+                <h1 className="display-5">SALUTE TO THE UNSUNG HEROES</h1>
+                <div className="row">
+                  <div className=" col-12 col-lg-6">
+                    {this.state.viewWidth < 991 ? heroesImg : content}
                   </div>
+                  {this.state.viewWidth < 991 ? content : heroesImg}
                 </div>
-              </Container>
-            </ThankYouComponent>
-          </React.Fragment>
+              </div>
+            </Container>
+          </div>
+          <ThankYouComponent />
           <div className="col-12 text-center">
             <img
               src={teamEnvision_logo}
               alt="teamEnvision_logo"
-              className="col-8 col-md-3 mb-3 mt-0"
+              className="col-10 col-md-6 col-lg-3 mb-3 mt-0"
             />
           </div>
         </div>
