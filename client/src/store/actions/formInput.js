@@ -43,6 +43,7 @@ export const submitForm = (data) => {
           alert("Check the attachment: " + err.response.data.error);
         } else if (err.response.status === 500) {
           alert("Try again after some time");
+          history.go("/");
           history.goBack();
         } else if (err.response.status === 403) {
           history.goBack("/403");

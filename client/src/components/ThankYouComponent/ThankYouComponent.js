@@ -42,13 +42,6 @@ const ThankYouComponent = (props) => {
             </p>
           </div>
         </div>
-        <div className="text-center teamEnvision_logo">
-          <img
-            src={teamEnvision_logo}
-            alt="teamEnvision_logo"
-            className="col-8 col-md-3"
-          />
-        </div>
       </div>
     </React.Fragment>
   );

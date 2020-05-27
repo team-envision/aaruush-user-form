@@ -193,10 +193,6 @@ iframe {
   transform: scale(0.55);
 }
 
-.teamEnvision_logo {
-  margin-top: 0px !important;
-}
-
 @media (min-width: 450px) {
   iframe {
     transform: scale(1);

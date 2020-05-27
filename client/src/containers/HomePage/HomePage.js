@@ -7,6 +7,7 @@ import Sent from "../../components/UI/Sent/Sent";
 import * as actions from "../../store/actions/index";
 import classes from "./HomePage.module.css";
 import aaruush_logo from "../../assets/images/aaruush_logo.png";
+import teamEnvision_logo from "../../assets/images/teamEnvision_logo.png";
 import heroes from "../../assets/images/heroes.png";
 
 class HomePage extends Component {
@@ -73,6 +74,13 @@ class HomePage extends Component {
               </HomePageForm>
             </React.Fragment>
           )}
+          <div className="col-12 text-center">
+            <img
+              src={teamEnvision_logo}
+              alt="teamEnvision_logo"
+              className="col-8 col-md-3 mb-3 mt-0"
+            />
+          </div>
         </div>
       </React.Fragment>
     );

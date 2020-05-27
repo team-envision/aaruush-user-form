@@ -3,6 +3,7 @@ import { Container } from "reactstrap";
 
 import ThankYouComponent from "../../components/ThankYouComponent/ThankYouComponent";
 import classes from "./ThankYou.module.css";
+import teamEnvision_logo from "../../assets/images/teamEnvision_logo.png";
 import aaruush_logo from "../../assets/images/aaruush_logo.png";
 import heroes from "../../assets/images/heroes.png";
 
@@ -63,6 +64,13 @@ class ThankYou extends Component {
               </Container>
             </ThankYouComponent>
           </React.Fragment>
+          <div className="col-12 text-center">
+            <img
+              src={teamEnvision_logo}
+              alt="teamEnvision_logo"
+              className="col-8 col-md-3 mb-3 mt-0"
+            />
+          </div>
         </div>
       </React.Fragment>
     );
