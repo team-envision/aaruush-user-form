@@ -12,7 +12,7 @@
 .login {
   background: #fafafa;
   display: block;
-  height: 350px !important;
+  height: 400px;
   margin: 15px auto;
   margin-top: 100px;
   margin-bottom: 0px;
@@ -34,4 +34,18 @@
 
 .teamEnvision_logo {
   margin-top: 0px !important;
+}
+
+h5 {
+  margin-top: 10px !important;
+}
+
+.instaHREF {
+  color: black;
+}
+
+.instaHREF:hover {
+  text-decoration: none;
+  letter-spacing: 1.3px;
+  transition: all 0.2s ease-in-out;
 }

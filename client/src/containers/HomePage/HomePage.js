@@ -10,7 +10,39 @@ import aaruush_logo from "../../assets/images/aaruush_logo.png";
 import heroes from "../../assets/images/heroes.png";
 
 class HomePage extends Component {
+  state = {
+    viewWidth: null,
+  };
+
+  componentWillMount() {
+    this.setState({ viewWidth: window.innerWidth });
+  }
+
   render() {
+    const content = (
+      <div className={classes.content_p}>
+        <p className="text-justify">
+          While we sit safely in our homes, some spend days and nights, risking
+          their lives to fight this pandemic. Team Aaruush attempts to thank
+          their efforts and pray for their well-being.
+        </p>
+        <p className="text-justify">
+          To show our gratitude towards their selflessness, we request you to
+          share a picture of any known corona warriors and/or a write-up
+          expressing your appreciation for them. These little anecdotes will be
+          sent to organisations, etc to build a sense of thankfulness in these
+          times of crisis.
+        </p>
+      </div>
+    );
+
+    const heroesImg = (
+      <React.Fragment>
+        <div className="col-1"></div>
+        <img src={heroes} alt="heroes" className="col-12 col-lg-5" />
+      </React.Fragment>
+    );
+
     return (
       <React.Fragment>
         <div>
@@ -32,31 +64,9 @@ class HomePage extends Component {
                     <h1 className="display-5">SALUTE TO THE UNSUNG HEROES</h1>
                     <div className="row">
                       <div className=" col-12 col-lg-6">
-                        <div className={classes.content_p}>
-                          <p className="text-justify">
-                            While we sit safely in our homes, some spend days
-                            and nights to fight this pandemic. Putting their
-                            lives at risk, they serve this nation diligently.
-                            Team Aaruush takes this moment, to thank their
-                            efforts and pray for their well-being.
-                          </p>
-                          <p className="text-justify">
-                            To show our gratitude towards their selflessness, we
-                            request you to share with us a picture of any known
-                            corona warriors and also write a little something to
-                            express your wishes and appreciation for them. We
-                            will present these little anecdotes to the helping
-                            organisations for the sense of thankfulness of our
-                            unsung heroes keeping the health and safety afloat
-                            in these times of crisis.
-                          </p>
-                        </div>
+                        {this.state.viewWidth < 991 ? heroesImg : content}
                       </div>
-                      <img
-                        src={heroes}
-                        alt="heroes"
-                        className="col-12 col-lg-6"
-                      />
+                      {this.state.viewWidth < 991 ? content : heroesImg}
                     </div>
                   </div>
                 </Container>

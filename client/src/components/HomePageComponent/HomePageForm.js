@@ -54,7 +54,7 @@ const HomePageForm = (props) => {
   function captchaValue(value) {
     formik.setFieldValue("recaptcha", value);
   }
-  console.log(process.env);
+
   return (
     <React.Fragment>
       {props.children}

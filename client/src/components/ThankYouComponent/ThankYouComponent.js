@@ -1,5 +1,6 @@
 import React from "react";
-import { AiOutlineInstagram } from "react-icons/ai";
+import Icon from "react-icons-kit";
+import { instagram } from "react-icons-kit/fa/instagram";
 
 import "./ThankYouComponent.css";
 import teamEnvision_logo from "../../assets/images/teamEnvision_logo.png";
@@ -23,10 +24,16 @@ const ThankYouComponent = (props) => {
                 Kindly follow our Instagram Page
                 <br />
                 <i>
-                  <AiOutlineInstagram />
-                  /aaruushsrm
+                  <h5>
+                    <a
+                      href="https://www.instagram.com/aaruush_srm/?hl=en"
+                      className="instaHREF"
+                    >
+                      <Icon icon={instagram} />
+                      /aaruushsrm
+                    </a>
+                  </h5>
                 </i>
-                <br />
                 for more updates.
               </p>
             </div>
