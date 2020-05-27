@@ -46,15 +46,15 @@ class HomePage extends Component {
     return (
       <React.Fragment>
         <div>
+          <img
+            src={aaruush_logo}
+            alt="aaruush_logo"
+            className={classes.aaruush_logo + " col-10 col-md-3 mx-auto"}
+          />
           {this.props.sent ? (
             <Sent />
           ) : (
             <React.Fragment>
-              <img
-                src={aaruush_logo}
-                alt="aaruush_logo"
-                className={classes.aaruush_logo + " col-10 col-md-3"}
-              />
               <HomePageForm
                 onSubmitForm={(values) => this.props.onSubmitForm(values)}
                 fileUploaded={(file) => console.log(file)}

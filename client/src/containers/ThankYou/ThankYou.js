@@ -47,7 +47,7 @@ class ThankYou extends Component {
             <img
               src={aaruush_logo}
               alt="aaruush_logo"
-              className={classes.aaruush_logo + " col-10 col-md-3"}
+              className={classes.aaruush_logo + " col-10 col-md-3 mx-auto"}
             />
             <ThankYouComponent>
               <Container className={classes.container}>
