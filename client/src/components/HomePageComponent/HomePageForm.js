@@ -39,6 +39,7 @@ const HomePageForm = (props) => {
                 "image/jpg",
                 "image/jpeg",
                 "image/png",
+                "image/svg",
                 "video/mp4",
                 "video/x-msvideo",
               ].includes(value.type)
