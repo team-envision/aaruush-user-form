@@ -8,31 +8,33 @@ export const fetchRecords = () => {
 
   return (dispatch) => {
     let token = localStorage.getItem("authToken");
-    axios
-      .get("/api/admin/records", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((res) => {
-        if ((res.data.status = "OK")) {
-          dispatch(setRecords(res.data.data));
-        }
-      })
-      .catch((err) => {
-        if (
-          err.response.status === 401 &&
-          err.response.data.error === "TokenExpiredError"
-        ) {
-          alert("Session Timeout. Please login again.");
-          history.push("/admin/login");
-        } else if (err.response.status === 401 || 403) {
-          alert("NO TRESPASSING!");
-          window.location.reload(false);
-          history.push("/admin/login");
-        } else if (err.response.status === 500) {
-          alert("Internal Server Error");
-          window.location.reload(false);
-        }
-      });
+    setInterval(() => {
+      axios
+        .get("/api/admin/records", {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((res) => {
+          if ((res.data.status = "OK")) {
+            dispatch(setRecords(res.data.data));
+          }
+        })
+        .catch((err) => {
+          if (
+            err.response.status === 401 &&
+            err.response.data.error === "TokenExpiredError"
+          ) {
+            alert("Session Timeout. Please login again.");
+            history.push("/admin/login");
+          } else if (err.response.status === 401 || 403) {
+            alert("NO TRESPASSING!");
+            window.location.reload(false);
+            history.push("/admin/login");
+          } else if (err.response.status === 500) {
+            alert("Internal Server Error");
+            window.location.reload(false);
+          }
+        });
+    }, 500);
   };
 };
 

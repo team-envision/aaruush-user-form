@@ -11,7 +11,6 @@ class Records extends Component {
     this.props.onFetchRecords();
     let expirationTime = localStorage.getItem("authTokenExpiration");
     let currentTime = new Date().getTime();
-    console.log(expirationTime - currentTime);
     let forcedLogout = expirationTime - currentTime;
     setTimeout(() => this.props.onLogout(), forcedLogout);
   }
