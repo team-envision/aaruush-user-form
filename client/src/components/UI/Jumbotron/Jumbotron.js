@@ -6,7 +6,9 @@ import teamEnvision_logo from "../../../assets/images/teamEnvision_logo.png";
 const Jumbotron = (props) => {
   return (
     <React.Fragment>
-      <div className={classes.jumbotronMain + " col-11"}>{props.children}</div>
+      <div className={classes.jumbotronMain + " col-11 col-lg-9"}>
+        {props.children}
+      </div>
       <div className="col-12 text-center">
         <img
           src={teamEnvision_logo}
