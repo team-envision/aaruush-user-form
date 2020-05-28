@@ -3,12 +3,15 @@ import { connect } from "react-redux";
 
 import * as actions from "../../store/actions/index";
 import LogInForm from "../../components/LogInForm/LogInForm";
+import Jumbotron from "../../components/UI/Jumbotron/Jumbotron";
 
 class Login extends Component {
   render() {
     return (
       <React.Fragment>
-        <LogInForm onSubmitForm={(values) => this.props.onLogin(values)} />
+        <Jumbotron>
+          <LogInForm onSubmitForm={(values) => this.props.onLogin(values)} />
+        </Jumbotron>
       </React.Fragment>
     );
   }

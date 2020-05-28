@@ -1,0 +1,19 @@
+.socialHandles {
+  margin-top: 10px !important;
+  font-size: 30px !important;
+}
+
+.fb {
+  color: #4064ad;
+}
+
+.insta {
+  color: #ab2e8e;
+}
+
+.HREF:hover {
+  text-decoration: none;
+  letter-spacing: 1.3px;
+  transition: all 0.2s ease-in-out;
+  color: teal;
+}
