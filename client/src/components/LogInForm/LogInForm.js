@@ -24,7 +24,7 @@ const LogInForm = (props) => {
   return (
     <React.Fragment>
       <h1 className="col-12 text-center"> Log In! </h1>
-      <Form onSubmit={formik.handleSubmit} className="mx-auto col-6">
+      <Form onSubmit={formik.handleSubmit} className="mx-auto col-12 col-lg-8">
         <div>
           <label htmlFor="username" className={classes.label_username}>
             Username
